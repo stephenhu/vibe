@@ -8,6 +8,7 @@ class InitSchema < ActiveRecord::Migration
       t.string :icon
       t.string :city
       t.string :password
+      t.string :salt
       t.integer :age
       t.integer :vibe
       t.timestamps :null => true
