@@ -9,7 +9,7 @@ class InitSchema < ActiveRecord::Migration
       t.string :city
       t.string :password
       t.integer :age
-      t.float :vibe
+      t.integer :vibe
       t.timestamps :null => true
     end
 
@@ -25,18 +25,17 @@ class InitSchema < ActiveRecord::Migration
       t.integer :user_id
       t.string :name, :null => false
       t.string :summary
-      t.boolean :open, :default => true
+      t.boolean :openia, :default => true
       t.integer :mincapacity
       t.integer :maxcapacity
       t.integer :minage
       t.integer :maxage
       t.integer :ratio
-      t.float   :minvibe
+      t.integer :minvibe
       t.timestamp :start
       t.timestamp :end
       t.string :gps
       t.string :location
-      t.string :map
       t.string :url
       t.integer :payment
       t.integer :cost
