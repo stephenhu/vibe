@@ -24,7 +24,7 @@ class InitSchema < ActiveRecord::Migration
       t.belongs_to :user
       t.integer :user_id
       t.string :name, :null => false
-      t.string :summary
+      t.text :summary
       t.boolean :openia, :default => true
       t.integer :mincapacity
       t.integer :maxcapacity
