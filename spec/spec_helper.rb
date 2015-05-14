@@ -12,18 +12,15 @@ def setup
   cleanup if Dir.exists?(ROOT)
 
   FileUtils.mkdir(ROOT)
-  puts "Successfully created directory #{ROOT}."
 
   generate_configs
   generate_database
-  generate_key
 
 end
 
 def cleanup
 
   FileUtils.rm_rf(ROOT)
-  puts "Successfully removed directory #{ROOT}."
 
 end
 
@@ -52,21 +49,34 @@ def generate_configs
 
 end
 
-def generate_database
-
-  m = "db/migrate"
+def connect_database
 
   db = YAML.load_file(DBCONFIG)["development"]
   ActiveRecord::Base.establish_connection db
 
-  ActiveRecord::Migration.verbose = false
-  ActiveRecord::Migrator.migrate(m)
+end
+
+def generate_key(email)
+
+  connect_database
+
+  k = Vibe::Key.find_or_create_by(:email => email)
+
+  return nil if k.nil?
+
+  return k.key unless k.nil?
 
 end
 
-def generate_key
+def generate_database
 
-  
+  m = "db/migrate"
+
+  connect_database
+
+  ActiveRecord::Migration.verbose = false
+  ActiveRecord::Migrator.migrate(m)
+
 end
 
 def get_app

@@ -2,7 +2,7 @@ module Vibe
 
   module Helper
 
-    def check_authorization?
+    def authorized_as_admin?
 
       admin     = params[:admin]
       password  = params[:password]
@@ -16,17 +16,13 @@ module Vibe
     def authorized?
 
       apikey  = params[:apikey]
-      appname = params[:appname]
 
-      return false if apikey.nil? or apikey.empty?
-      return false if appname.nil? or appname.empty?
+      halt 401 if apikey.nil? or apikey.empty?
 
       k = Key.find_by_key(apikey)
 
-      return false if k.nil?
+      halt 401 if k.nil?
  
-      k.name != appname ? false : true
-      
     end
 
   end

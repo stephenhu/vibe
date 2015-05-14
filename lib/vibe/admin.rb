@@ -8,7 +8,7 @@ module Vibe
 
     get "/keys/:id" do
 
-      check_authorization?
+      authorized_as_admin?
 
       id = params[:id]
 
@@ -24,7 +24,7 @@ module Vibe
 
     post "/keys" do
 
-      check_authorization?
+      authorized_as_admin?
 
       email         = params[:email]
       #permissions   = params[:permissions]
@@ -39,7 +39,7 @@ module Vibe
 
     put "/keys/:id" do
 
-      check_authorization?
+      authorized_as_admin?
 
       id          = params[:id]
       email       = params[:email]
@@ -63,7 +63,7 @@ module Vibe
     # id is an email address
     delete "/keys/:id" do
 
-      check_authorization?
+      authorized_as_admin?
 
       id = params[:id]
 
