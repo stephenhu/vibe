@@ -2,6 +2,13 @@ class InitSchema < ActiveRecord::Migration
 
   def self.up
 
+    create_table :keys do |t|
+      t.string :email, :null => false
+      t.string :key
+      t.string :permissions
+      t.timestamps :null => true
+    end
+
     create_table :users do |t|
       t.string :name, :null => false
       t.string :mobile, :null => false
@@ -84,6 +91,7 @@ class InitSchema < ActiveRecord::Migration
 
   def self.down
 
+    drop_table :keys
     drop_table :users
     drop_table :contacts
     drop_table :events

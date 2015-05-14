@@ -8,6 +8,8 @@ module Vibe
 
     get "/users/:id" do
 
+      halt 401 if not authorized?
+
       id = params[:id]
 
       halt 404 if id.nil?
@@ -23,6 +25,8 @@ module Vibe
     end
 
     post "/users" do
+
+      halt 401 if not authorized?
 
       name      = params[:name]
       password  = params[:password]
