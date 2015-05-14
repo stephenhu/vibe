@@ -13,8 +13,6 @@ module Vibe
 
       set :database, database
       set :config, config
-      set :email, email
-      set :apikey, apikey
 
       cipher = OpenSSL::Cipher::AES.new( 128, :CBC )
       cipher.encrypt

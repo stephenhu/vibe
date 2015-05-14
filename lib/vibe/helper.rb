@@ -4,12 +4,12 @@ module Vibe
 
     def check_authorization?
 
-      email     = params[:email]
-      apikey    = params[:apikey]
+      admin     = params[:admin]
+      password  = params[:password]
 
-      halt 401 if email.nil? or apikey.nil?
-      halt 401 if settings.email != email
-      halt 401 if settings.apikey != apikey
+      halt 401 if admin.nil? or password.nil?
+      halt 401 if settings.config["app"]["admin"] != admin
+      halt 401 if settings.config["app"]["password"] != password
 
     end
 

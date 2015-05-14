@@ -21,8 +21,6 @@ describe "API" do
   end
 
   it "creates user" do
-
-
   end
 
   it "gets user" do

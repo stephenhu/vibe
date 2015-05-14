@@ -1,12 +1,12 @@
 test:
   adapter: sqlite3
-  database: <%= databasepath %>
+  database: <%= path %>
   pool: 10
   timeout: 5000
 
 development:
   adapter: sqlite3
-  database: /home/hu/src/vibe/db/vibe.db
+  database: <%= path %>
   pool: 10
   timeout: 5000
 

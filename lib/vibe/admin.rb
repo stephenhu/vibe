@@ -18,7 +18,7 @@ module Vibe
 
       halt 404 if k.nil?
 
-      return { :status => "200", :msg => "#{k.key}" }.to_json
+      return {:status => "200", :msg => "#{k.key}"}.to_json
 
     end
 
@@ -27,13 +27,13 @@ module Vibe
       check_authorization?
 
       email         = params[:email]
-      permissions   = params[:permissions]
+      #permissions   = params[:permissions]
 
       halt 400 if email.nil?
 
-      k = Key.find_or_create_by_email(:email => email)
+      k = Key.find_or_create_by(:email => email)
 
-      return { :status => "200", :msg => "#{k.key}" }.to_json
+      return {:status => "200", :msg => "#{k.key}"}.to_json
 
     end
 
@@ -56,7 +56,7 @@ module Vibe
         :permissions => permission
       )
 
-      return { :status => "200", :msg => "" }.to_json
+      return {:status => "200", :msg => ""}.to_json
 
     end
 
@@ -75,7 +75,7 @@ module Vibe
 
       k.destroy
 
-      return { :status => "200", :msg => "" }.to_json
+      return {:status => "200", :msg => ""}.to_json
 
     end
 

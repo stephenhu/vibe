@@ -3,7 +3,7 @@ module Vibe
   class Api < App
 
     get "/version" do
-      return { :status => "200", :msg => "v1" }.to_json
+      return { :status => "200", :msg => "1" }.to_json
     end
 
     get "/users/:id" do
